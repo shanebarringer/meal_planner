@@ -1,0 +1,5 @@
+create_table("recipes") {
+	t.Column("id", "uuid", {primary: true})
+	t.Column("name", "string", {})
+	t.Column("prep_time", "integer", {})
+}
