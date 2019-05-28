@@ -60,6 +60,8 @@ func App() *buffalo.App {
 		app.GET("/", HomeHandler)
 
 		app.Resource("/recipes", RecipesResource{})
+		app.Resource("/ingredients", IngredientsResource{})
+
 	}
 
 	return app
