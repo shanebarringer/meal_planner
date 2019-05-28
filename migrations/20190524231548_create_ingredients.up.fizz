@@ -1,0 +1,7 @@
+create_table("ingredients") {
+	t.Column("id", "uuid", {primary: true})
+	t.Column("name", "string", {})
+	t.Column("amount", "integer", {})
+	t.Column("recipe_id", "uuid", {})
+	t.ForeignKey("recipe_id", {"recipes": ["id"]}, {"on_delete": "cascade"})
+}
