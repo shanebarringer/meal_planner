@@ -12,7 +12,7 @@ name = "load recipes"
       updated_at = "<%= now() %>"
 
     [[scenario.table.row]]
-      id = "<%= uuid() %>"
+      id = "<%= uuidNamed("hotdog") %>"
       name = "Soba with Tofu"
       prep_time = 30
       created_at = "<%= now() %>"
@@ -25,3 +25,22 @@ name = "load recipes"
       created_at = "<%= now() %>"
       updated_at = "<%= now() %>"
 
+
+  [[scenario.table]]
+    name= "ingredients"
+
+    [[scenario.table.row]]
+      id = "<%= uuid() %>"
+      name = "Vegetarian Hot Dogs"
+      amount = 4
+      recipe_id = "<%= uuidNamed("hotdog") %>"
+      created_at = "<%= now() %>"
+      updated_at = "<%= now() %>"
+
+    [[scenario.table.row]]
+      id = "<%= uuid() %>"
+      name = "Hot Dog Buns"
+      amount = 8
+      recipe_id = "<%= uuidNamed("hotdog") %>"
+      created_at = "<%= now() %>"
+      updated_at = "<%= now() %>"

@@ -19,7 +19,7 @@ func (as *ActionSuite) Test_RecipesResource_List() {
 func (as *ActionSuite) Test_RecipesResource_Show() {
 	as.LoadFixture("load recipes")
 
-	res := as.JSON("/recipes/3e9d4326-fc93-4946-845e-789790ae5116").Get()
+	res := as.JSON("/recipes/%s", as.uuidNamed("hotdog")).Get()
 	as.Equal(200, res.Code)
 
 	body := res.Body.String()
@@ -45,7 +45,7 @@ func (as *ActionSuite) Test_RecipesResource_Create() {
 func (as *ActionSuite) Test_RecipesResource_Update() {
 	as.LoadFixture("load recipes")
 
-	res := as.JSON("/recipes/3e9d4326-fc93-4946-845e-789790ae5116").Put(&models.Recipe{Name: "Beyond Burger"})
+	res := as.JSON("/recipes/uuidNamed(\"hotdog\")").Put(&models.Recipe{Name: "Beyond Burger"})
 
 	as.Equal(200, res.Code)
 
@@ -57,11 +57,11 @@ func (as *ActionSuite) Test_RecipesResource_Update() {
 func (as *ActionSuite) Test_RecipesResource_Destroy() {
 	as.LoadFixture("load recipes")
 
-	res := as.JSON("/recipes/3e9d4326-fc93-4946-845e-789790ae5116").Delete()
+	res := as.JSON("/recipes/uuidNamed(\"hotdog\")").Delete()
 
 	as.Equal(200, res.Code)
 
-	err := as.DB.Find(&models.Recipe{}, "3e9d4326-fc93-4946-845e-789790ae5116")
+	err := as.DB.Find(&models.Recipe{}, "uuidNamed(\"hotdog\")")
 
 	as.NotNil(err)
 }
